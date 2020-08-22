@@ -1,8 +1,9 @@
 package br.com.compasso.test.controller;
 
-import br.com.compasso.test.entity.Customer;
 import br.com.compasso.test.payload.NamePayload;
+import br.com.compasso.test.entity.Customer;
 import br.com.compasso.test.service.CustomerService;
+import io.swagger.annotations.ApiResponse;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
@@ -39,6 +40,7 @@ public class CustomerController {
     }
 
     @PatchMapping("{id}")
+    @ApiResponse(code = 304, message = "Not Modified")
     public ResponseEntity<Customer> updateName(@RequestBody NamePayload payload, @PathVariable("id") Long id) {
         Customer customer = customerService.findById(id);
 
