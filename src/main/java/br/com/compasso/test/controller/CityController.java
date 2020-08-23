@@ -21,7 +21,7 @@ public class CityController {
     }
 
     @GetMapping("name/{name}")
-    public ResponseEntity<City> getByName(@PathVariable("name") String name) {
+    public ResponseEntity<List<City>> getByName(@PathVariable("name") String name) {
         return ResponseEntity.ok(cityService.findByName(name));
     }
 

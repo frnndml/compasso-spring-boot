@@ -63,7 +63,8 @@ class CompassoApplicationTests {
 				.andDo(print())
 				.andExpect(status().isOk())
 				.andExpect(content().contentTypeCompatibleWith(MediaType.APPLICATION_JSON))
-				.andExpect(jsonPath("$.name", is("Lages")));
+				.andExpect(jsonPath("$", hasSize(equalTo(1))))
+				.andExpect(jsonPath("$[0].name", is("Lages")));
 
 		cityRepository.deleteAll();
 	}
@@ -147,7 +148,8 @@ class CompassoApplicationTests {
 				.andDo(print())
 				.andExpect(status().isOk())
 				.andExpect(content().contentTypeCompatibleWith(MediaType.APPLICATION_JSON))
-				.andExpect(jsonPath("$.name", is(customer.getName())));
+				.andExpect(jsonPath("$", hasSize(equalTo(1))))
+				.andExpect(jsonPath("$[0].name", is(customer.getName())));
 
 		customerRepository.deleteAll();
 		cityRepository.deleteAll();

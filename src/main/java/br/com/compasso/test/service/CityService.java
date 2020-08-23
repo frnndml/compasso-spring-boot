@@ -18,7 +18,7 @@ public class CityService {
         return cityRepository.findAll();
     }
 
-    public City findByName(String name) {
+    public List<City> findByName(String name) {
         return cityRepository.findByName(name);
     }
 

@@ -20,7 +20,7 @@ public class CustomerController {
     private CustomerService customerService;
 
     @GetMapping
-    public ResponseEntity<List> get() {
+    public ResponseEntity<List<Customer>> get() {
         return ResponseEntity.ok(customerService.findAll());
     }
 
@@ -30,7 +30,7 @@ public class CustomerController {
     }
 
     @GetMapping("name/{name}")
-    public ResponseEntity<Customer> getByName(@PathVariable("name") String name) {
+    public ResponseEntity<List<Customer>> getByName(@PathVariable("name") String name) {
         return ResponseEntity.ok(customerService.findByName(name));
     }
 
